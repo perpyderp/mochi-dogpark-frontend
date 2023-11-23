@@ -37,17 +37,17 @@ export const CATEGORIES = [
         featured: [
             {
                 name: "Toys",
-                href: "#",
+                href: "/shop/toys",
                 imageSrc: "/assets/nav/shop/toys.jpg"
             },
             {
                 name: "Food",
-                href: "#",
+                href: "/shop/food",
                 imageSrc: "/assets/nav/shop/food.png"
             },
             {
                 name: "Accessories",
-                href: "#",
+                href: "/shop/accessories",
                 imageSrc: "/assets/nav/shop/accessories.png"
             }
         ]
