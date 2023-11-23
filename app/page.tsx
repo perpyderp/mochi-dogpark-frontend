@@ -1,143 +1,90 @@
-"use client"
+import { MaxWidthWrapper } from "@/components/MaxWidthWrapper";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { LandPlot, PawPrint, ScissorsSquare, ShieldCheck, Sparkles, Store } from "lucide-react";
+import Link from "next/link";
+import * as React from "react";
 
-import * as React from "react"
-import Link from "next/link"
-
-import { cn } from "@/lib/utils"
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
-
-const components: { title: string; href: string; description: string }[] = [
+const features = [
   {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+    name: "Indoor and outdoor play areas",
+    icon: PawPrint,
+    description: "We know our pet's can get dirty and be more cleanup especially on rainy days. Therefore we have an indoor for rainy days or for those who want to minimize cleanup of their dog's paws. And an outdoor for the days were the sun shines bright, or if you prefer the outdoors!"
   },
   {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
-    description:
-      "For sighted users to preview content available behind a link.",
+    name: "Big and small dog areas, trained and certified areas",
+    icon: LandPlot,
+    description: "We acknowledge big dogs may not get along with smaller dogs, so we have separate areas for your pets to ensure their safety and reduce the chance for altercations. In addition, an extra area for big and small dogs for pets who have been trained and known to have a good track record."
   },
   {
-    title: "Progress",
-    href: "/docs/primitives/progress",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+    name: "A separate area for dogs in training",
+    icon: ShieldCheck,
+    description: "Equipped with skilled trainers, an area for skilled pets to be trained and treated with the utmost care!"
   },
   {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
+    name: "Shop for dog food, toys, accessories, and more!",
+    icon: Store,
+    description: "Our dog shop contains the highest quality products!"
   },
   {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+    name: "Grooming for your pet",
+    icon: ScissorsSquare,
+    description: "Subscription or no subscription, we offer grooming for pets next to our store"
   },
   {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  },
-]
+    name: "Cleanliness",
+    icon: Sparkles,
+    description: "Keeping the park clean is a shared responsibility between our custodiants and the owners! We do our best to keep our park clean but we want to mitigate the work for our staff as well."
+  }
+];
 
 export default function NavigationMenuDemo() {
   return (
-    <NavigationMenu>
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              <li className="row-span-3">
-                <NavigationMenuLink asChild>
-                  <a
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                    href="/"
-                  >
-                    <div className="mb-2 mt-4 text-lg font-medium">
-                      shadcn/ui
-                    </div>
-                    <p className="text-sm leading-tight text-muted-foreground">
-                      Beautifully designed components built with Radix UI and
-                      Tailwind CSS.
-                    </p>
-                  </a>
-                </NavigationMenuLink>
-              </li>
-              <ListItem href="/docs" title="Introduction">
-                Re-usable components built using Radix UI and Tailwind CSS.
-              </ListItem>
-              <ListItem href="/docs/installation" title="Installation">
-                How to install dependencies and structure your app.
-              </ListItem>
-              <ListItem href="/docs/primitives/typography" title="Typography">
-                Styles for headings, paragraphs, lists...etc
-              </ListItem>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Components</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {components.map((component) => (
-                <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
-                >
-                  {component.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Documentation
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
+    <>
+    <MaxWidthWrapper>
+      <div className="py-20 mx-auto text-center flex flex-col items-center max-w-3xl">
+        <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl ">
+          Your{" "}
+          <span className="text-blue-600">park </span>
+          and{" "}
+          <span className="text-blue-600">market </span>
+          for all you and your dog's needs!
+        </h1>
+        <p className="mt-6 text-lg max-w-prose text-muted-foreground">
+          Welcome to Mochi's Dogpark! We offer many plans for your dogs including access to our indoor and outdoor parks 
+          for rainy days or beautiful sunny days. We also have an indoor shop for dog accessories, toys, food, and more!
+
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 mt-6">
+          <Link href="/products" className={buttonVariants()}>View plans</Link>
+          <Button variant="ghost">Our quality promise &rarr;</Button>
+        </div>
+      </div>
+    </MaxWidthWrapper>
+    <section className="border-t border-gray-200 bg-gray-50">
+      <MaxWidthWrapper className="py-20">
+        <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-8">
+          {features.map((feature) => (
+            <div key={feature.name} className="text-center md:flex md:items-start md:text-left lg:block lg:text-center">
+              <div className="md:flex-shrink-0 flex justify-center">
+                <div className="h-16 w-16 flex items-center justify-center rounded-full bg-blue-100 text-blue-900">
+                  {<feature.icon className="w-1/3 h-1/3" />}
+                </div>
+              </div>
+              <div className="mt-6 md:ml-4 md:mt-0 lg:ml-0 lg:mt-6">
+                <h3 className="text-base font-medium text-gray-900">
+                  {feature.name}
+                </h3>
+                <p className="mt-3 text-sm text-muted-foreground">
+                  {feature.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </MaxWidthWrapper>
+    </section>
+
+    </>
   )
 }
-
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  )
-})
-ListItem.displayName = "ListItem"
