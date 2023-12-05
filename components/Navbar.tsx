@@ -17,11 +17,12 @@ import {
     navigationMenuTriggerStyle,
     NavigationMenuViewport,
 } from "@/components/ui/navigation-menu"
+import { buttonVariants } from "./ui/button";
 
 export const Navbar = () => {
     return (
         <MaxWidthWrapper className="border-b border-gray-200">
-            <NavigationMenu className="h-12">
+            <NavigationMenu className="h-20 w-full flex justify-between items-center max-w-none">
                 <NavigationMenuList>
                     <NavigationMenuItem>
                         <Link href="/">
@@ -38,62 +39,39 @@ export const Navbar = () => {
                             <NavigationMenuTrigger>{category.label}</NavigationMenuTrigger>
                             <NavigationMenuContent>
                                     {category.featured.map((feature) => (
-                                        <div key={feature.name} className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                                            <NavigationMenuLink href={feature.href}>{feature.name}</NavigationMenuLink>
-                                            <Image 
-                                                src={feature.imageSrc}
-                                                alt="feature-img"
-                                                width={500}
-                                                height={500}
-                                            />
+                                        <div key={feature.name} className="grid gap-3 grid-cols-2 p-6 md:w-[350px] lg:w-[350px] items-center">
+                                                <div className="text-lg font-semibold">
+                                                    {feature.name}
+                                                </div>
+                                                <div className="overflow-hidden rounded-md">
+                                                    <Image 
+                                                        src={feature.imageSrc}
+                                                        className=""
+                                                        alt="feature-img"
+                                                        width={350}
+                                                        height={350}
+                                                    />
+                                                </div>
                                         </div>
                                     ))}
-                                    {/* <NavigationMenuLink
-                                        href="/indoor-park"
-                                    >
-                                        Indoor Park
-                                    </NavigationMenuLink> */}
                             </NavigationMenuContent>
                         </NavigationMenuItem>
                     ))}
                 </NavigationMenuList>
+                <NavigationMenuList>
+                    <NavigationMenuItem>
+                        <Link href="/sign-up" className={buttonVariants()}>
+                            Sign up
+                        </Link>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem>
+                        <Link href="/login" className={buttonVariants()}>
+                            Login
+                        </Link>
+                    </NavigationMenuItem>
+                </NavigationMenuList>
             </NavigationMenu>
         
         </MaxWidthWrapper>
-        // <div className="bg-white sticky z-50 top-0 inset-x-0 h-16">
-        //     <header className="relative bg-white">
-        //         <MaxWidthWrapper>
-        //             <div className="border-b border-gray-200">
-        //                 <div className="flex h-16 items-center">
-        //                     {/* TODO: Mobile navbar */}
-
-                            // <div className="ml-4 flex lg:ml-0">
-                            //     <Link href="/">
-                            //         <Image 
-                            //             src="/assets/logo.png"
-                            //             alt="shiba"
-                            //             height={40}
-                            //             width={40}
-                            //         />
-                            //     </Link>
-                            // </div>
-        //                     <div className="hidden z-50 lg:ml-8 lg:block lg:self-stretch">
-                                
-        //                     <NavigationMenu>
-        //                             <NavigationMenuList>
-        //                                 <NavigationMenuItem>
-        //                                 <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
-        //                                 <NavigationMenuContent>
-        //                                     <NavigationMenuLink>Link</NavigationMenuLink>
-        //                                 </NavigationMenuContent>
-        //                                 </NavigationMenuItem>
-        //                             </NavigationMenuList>
-        //                     </NavigationMenu>
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //         </MaxWidthWrapper>
-        //     </header>
-        // </div>
     )
 }

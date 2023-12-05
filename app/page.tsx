@@ -1,6 +1,7 @@
 import { MaxWidthWrapper } from "@/components/MaxWidthWrapper";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { LandPlot, PawPrint, ScissorsSquare, ShieldCheck, Sparkles, Store } from "lucide-react";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Check, LandPlot, PawPrint, ScissorsSquare, ShieldCheck, Sparkles, Store } from "lucide-react";
 import Link from "next/link";
 import * as React from "react";
 
@@ -37,7 +38,56 @@ const features = [
   }
 ];
 
-export default function NavigationMenuDemo() {
+const plans = [
+  {
+    title: "Basic Plan",
+    price: "$20",
+    description: "per month, up to 2 registered dogs",
+    perks: [
+      {
+        id: "plan_desc_1",
+        description: "Access to indoor and outdoor dog parks",
+      },
+      {
+        id: "plan_desc_2",
+        description: "Discounted items for our store",
+      },
+      {
+        id: "plan_desc_3",
+        description: "10% Discount on grooming services",
+      },
+    ]
+  },
+  {
+    title: "Premium Plan",
+    price: "$30",
+    description: "per month, up to 5 registered dogs",
+    perks: [
+      {
+        id: "plan_desc_4",
+        description: "Access to indoor and outdoor dog parks",
+      },
+      {
+        id: "plan_desc_5",
+        description: "Discounted items for our store",
+      },
+      {
+        id: "plan_desc_6",
+        description: "15% Discount on grooming services",
+      },
+      {
+        id: "plan_desc_7",
+        description: "Training session for your dogs",
+      },
+      {
+        id: "plan_desc_8",
+        description: "Free monthly dog care box!",
+      },
+    ]
+  }
+]
+
+export default function Home() {
   return (
     <>
     <MaxWidthWrapper>
@@ -55,7 +105,7 @@ export default function NavigationMenuDemo() {
 
         </p>
         <div className="flex flex-col sm:flex-row gap-4 mt-6">
-          <Link href="/products" className={buttonVariants()}>View plans</Link>
+          <Link href="#plans" className={buttonVariants()}>View plans</Link>
           <Button variant="ghost">Our quality promise &rarr;</Button>
         </div>
       </div>
@@ -83,6 +133,34 @@ export default function NavigationMenuDemo() {
         </div>
 
       </MaxWidthWrapper>
+    </section>
+    <section id="plans" className="border-t border-gray-200 p-20">
+      <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-1 md:grid-cols-2 sm:gap-x-6 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-8">
+        {plans.map((plan) => (
+          <Card key={plan.title} className="">
+            <CardHeader className="text-center">
+              <CardTitle className="text-4xl font-bold">{plan.title}</CardTitle>
+              <h2 className="text-3xl font-semibold">{plan.price}</h2>
+              <CardDescription>{plan.description}</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ul className="flex flex-col items-center space-y-6">
+                {plan.perks.map((perk) => (
+                  <li key={perk.id} className="flex">
+                    <Check />
+                    <span>
+                      {perk.description}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+            <CardFooter className="flex justify-center">
+              <Link href="#plans" className={buttonVariants()}>Try {plan.title}</Link>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
     </section>
 
     </>
