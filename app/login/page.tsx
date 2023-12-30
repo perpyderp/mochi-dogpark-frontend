@@ -8,6 +8,7 @@ import { Icons } from "@/components/icons"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { signIn } from "next-auth/react"
 
 export default function Login() {
 
@@ -58,13 +59,13 @@ export default function Login() {
             </span>
           </div>
         </div>
-        <Button variant="outline" type="button" disabled={isLoading}>
+        <Button variant="outline" type="button" disabled={isLoading} onClick={() => signIn("google")}>
           {isLoading ? (
             <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
           ) : (
-            <Icons.gitHub className="mr-2 h-4 w-4" />
+            <Icons.google className="mr-2 h-4 w-4" />
           )}{" "}
-          Github
+          Google
         </Button>
       </div>
     )
